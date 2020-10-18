@@ -1,34 +1,38 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return(
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
             <div className="container">
-                <a class="navbar-brand h2" href="#">chng.org</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <Link to="/" className="navbar-brand text-white">chng.org</Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <div className="collapse navbar-collapse" id="navbarText">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to="/new-petition" className="nav-link text-white" href="#">Start a Petition</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link text-white" href="#">My Petitions</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                        <li className="nav-item">
+                            <a className="nav-link text-white" href="#">Browse</a>
                         </li>
                     </ul>
-                    <span class="navbar-text">
-                        Navbar text with an inline element
-                </span>
+                    <form className="form-inline">
+                        <input className="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
-            
         </nav>
     )
+}
+
+const styles = {
+    backgroundColor: "rgba(0, 0, 0, 0.9)"
 }
 
 export default Navbar; 

@@ -21,7 +21,7 @@ router.route('/add').post((req, res) => {
     const organizationName = req.body.organizationName;
     const petitionsCreated = req.body.petitionsCreated;
     const petitionsSigned = req.body.petitionsSigned;
-    const dateCreated = req.body.dateCreated;
+    const accountCreated = Date.now();
 
     const newUser = new User({
         firstname,
@@ -37,7 +37,7 @@ router.route('/add').post((req, res) => {
         organizationName,
         petitionsCreated,
         petitionsSigned,
-        dateCreated
+        accountCreated
     })
 
     newUser.save()
@@ -46,12 +46,6 @@ router.route('/add').post((req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' +err));
 })
-
-/* router.route('/find/:email').post((req, res) =>{
-    User.findOne({email:req.params.email})
-        .then(user => res.json(user))
-        .catch(err => res.status(400).json('Error: ' +err))
-}); */
 
 router.route('/:id').get((req, res) =>{
     User.findById(req.params.id)
@@ -81,7 +75,6 @@ router.route('/update/:id').post((req, res) => {
         user.organizationName = req.body.organizationName;
         user.petitionsCreated = req.body.petitionsCreated;
         user.petitionsSigned = req.body.petitionsSigned;
-        user.dateCreated = Date.now();
 
         user.save()
             .then(() => res.json(user))

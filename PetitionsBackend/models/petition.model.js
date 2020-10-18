@@ -9,6 +9,7 @@ const petitionSchema = new Schema({
     audience: {type: String},
     mediaUrl: {type: String},
     signatories: {type: Array},
+    dateCreated: {type: Date}
 });
 
 const Petition = mongoose.model('Petition', petitionSchema);

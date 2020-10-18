@@ -14,6 +14,7 @@ router.route('/add').post((req, res) => {
     const audience = req.body.audience;
     const mediaUrl = req.body.mediaUrl;
     const signatories = req.body.signatories;
+    const dateCreated = Date.now();
 
     const newPetition = new Petition({
         title,
@@ -21,13 +22,15 @@ router.route('/add').post((req, res) => {
         category,
         audience,
         mediaUrl,
-        signatories
+        signatories,
+        dateCreated
     })
 
     newPetition.save()
         .then(() => res.json('Petition has been created')) 
         .catch(err => res.status(400).json('Error: ' +err));
 })
+
 router.route('/:id').delete((req, res) =>{
     Petition.findByIdAndDelete(req.params.id)
     .then(() => res.json('Petition Deleted'))
@@ -50,42 +53,5 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ' +err));
 });
-
-/* router.route('/unauthorized').get((req, res) =>{
-    PurchaseHistory.find({authorized:false})
-        .then(history => res.json(history.reverse()))
-        .catch(err => res.status(400).json('Error: ' +err))
-});
-
-router.route('/authorized').get((req, res) =>{
-    PurchaseHistory.find({authorized:true})
-        .then(history => res.json(history.reverse()))
-        .catch(err => res.status(400).json('Error: ' +err))
-});
-
-router.route('/find/:itemname').get((req, res) =>{
-    PurchaseHistory.find({itemName:req.params.itemname, authorized: true})
-        .then(history => res.json(history.reverse()))
-        .catch(err => res.status(400).json('Error: ' +err))
-});
-
-router.route('/findMonth/:itemname').get((req, res) =>{
-    let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    let result = []
-    let date
-    PurchaseHistory.find({itemName:req.params.itemname, authorized: true})
-        .then(history => {
-            history.map((item)=>{
-                date = item.date.toString()
-                monthNumber = new Date().getMonth()
-                thisMonth = months[monthNumber]
-                if(date.includes(thisMonth)){
-                    result.push(item)
-                }
-            })
-            res.json(result)
-        })
-        .catch(err => res.status(400).json('Error: ' +err))
-}); */
 
 module.exports = router;

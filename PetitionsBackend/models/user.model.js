@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     firstname:{type: String, required: true,},
     lastname: {type: String, required: true},
-    email:{type: String,},
+    email:{type: String},
     password: {type: String},
     aboutMe: {type: String},
     streetAddress: {type: String},
@@ -16,7 +16,7 @@ const userSchema = new Schema({
     organizationName: {type: String},
     petitionsCreated: {type: Array},
     petitionsSigned: {type: Array},
-    dateCreated: {type: Date}
+    accountCreated: {type: Date}
 });
 
 const User = mongoose.model('User', userSchema);

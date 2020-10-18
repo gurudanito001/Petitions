@@ -1,30 +1,45 @@
 import React from 'react';
 import Navbar from './navbar';
-import imgUrl from '../images/bannerImg.jpg'
+import imgUrl from '../images/change.jpg'
 
 
 function Homepage (){
     return(
         <>
-            <Navbar />
-            <div className="" style={styles.banner}>
-                This is a container
+            <div style={styles.banner}>
+                <Navbar />
+                <section className="container mt-auto border">
+                    <h3 className="text-white text-center font-weight-normal">
+                        Start a Movement | Join Online Movements | Facilitate World Change
+                    </h3>
+                </section>
+
+                
             </div>
+
+            <section className="container">
+                <h4>Featured Petitions</h4>
+            </section>
+
+            <section className="container">
+                <h4>Trending Petitions</h4>
+            </section>
         </>
     )
 }
 
 const styles = {
     banner:{
-        height: '400px',
-        background:'linear-gradient(0deg, rgba(255, 0, 150, 0.9), rgba(255, 0, 150, 0.9)), url(' + imgUrl + ')',
-        backgroundColor: 'red',
-        backgroundImage: 'url(' + imgUrl + ')',
+        height: '550px',
+        background:'linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url(' + imgUrl + ')',
+        backgroundBlendMode: 'overlay',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center'
+    },
+    navbar:{
+        backgroundColor: 'rgba(0, 0, 0, 0.9)'
     }
-    
 };
 
 export default Homepage;
